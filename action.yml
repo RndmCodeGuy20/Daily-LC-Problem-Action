@@ -1,0 +1,12 @@
+name: "Get Daily LeetCode Problem"
+author: "Shantanu Mane"
+
+description: "Get Daily LeetCode Problem"
+
+branding:
+  icon: "code"
+  color: "green"
+
+runs:
+  using: "node16"
+  main: "index.js"
