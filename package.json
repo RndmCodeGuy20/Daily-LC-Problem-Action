@@ -1,0 +1,22 @@
+{
+  "name": "daily-lc-problem-action",
+  "version": "1.0.0",
+  "description": "get daily problem from lc right into your repo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "actions",
+    "cicd",
+    "workflow"
+  ],
+  "author": "RndmCodeGuy20",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-request": "^6.1.0",
+    "turndown": "^7.1.2"
+  }
+}
