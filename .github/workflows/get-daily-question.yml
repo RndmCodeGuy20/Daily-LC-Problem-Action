@@ -1,0 +1,41 @@
+name: Get Daily LeetCode Problem
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+
+  get-problem:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run start
+
+  commit:
+    needs: get-problem
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: |
+          git config --global user.name "rndmcodeguy"
+          git config --global user.email "shantanu.mane.200@outlook.com"
+          git add .
+          git commit -m "chore 🦈: today's daily leetcode question added"
+          git push
