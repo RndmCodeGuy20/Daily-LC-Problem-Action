@@ -1,7 +1,7 @@
 name: Get Daily LeetCode Problem
 
 on:
-  schedule:
+  schedule: 
     - cron: "0 1 * * *"
 
 jobs:
