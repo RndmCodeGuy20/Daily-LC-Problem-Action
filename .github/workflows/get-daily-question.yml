@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Use Node.js
       uses: actions/setup-node@v2
@@ -29,6 +31,6 @@ jobs:
         git status
         git add -A
         git commit -m "chore(action) 🦈: today's daily leetcode question added"
-        git push
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/RndmCodeGuy20/Daily-LC-Problem-Action.git HEAD:main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
