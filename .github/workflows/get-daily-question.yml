@@ -26,6 +26,7 @@ jobs:
       run: |
         git config --global user.name 'RndmCodeGuy20'
         git config --global user.email 'shantanu.mane.200@outlook.com'
+        git status
         git add -A
         git commit -m "chore(action) 🦈: today's daily leetcode question added"
         git push
