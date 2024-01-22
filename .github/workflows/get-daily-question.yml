@@ -5,35 +5,37 @@ on:
     - cron: "0 1 * * *"
 
 jobs:
-  build:
+  build-and-setup-node:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
   get-problem:
-    needs: build
+    needs: build-and-setup-node
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm run start
+      - name: Run Script
+        run: npm run start
 
   commit:
     needs: get-problem
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: |
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Commit Changes
+        run: |
           git config --global user.name "rndmcodeguy"
           git config --global user.email "shantanu.mane.200@outlook.com"
           git add .
