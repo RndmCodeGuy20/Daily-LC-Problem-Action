@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: files in directory
+        run: ls 
       - name: Run Script
         run: npm run start
 
