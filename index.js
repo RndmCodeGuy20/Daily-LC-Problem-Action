@@ -38,4 +38,4 @@ const main = async () => {
     await createFilesFromData(data, dirPath);
 };
 
-main();
+await main();
