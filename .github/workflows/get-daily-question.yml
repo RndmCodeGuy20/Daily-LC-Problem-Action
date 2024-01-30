@@ -31,6 +31,4 @@ jobs:
         git status
         git add -A
         git commit -m "chore(action) 🦈: today's daily leetcode question added"
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/RndmCodeGuy20/Daily-LC-Problem-Action.git HEAD:main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push origin LC-04-unit-tests
