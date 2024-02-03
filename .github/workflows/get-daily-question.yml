@@ -33,4 +33,4 @@ jobs:
         git status
         git add -A
         git commit -m "chore(action) 🦈: today's daily leetcode question added"
-        git push origin LC-04-unit-tests
+        git push origin main
