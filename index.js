@@ -25,7 +25,7 @@ query questionOfToday {
     }
 }`;
 
-const getInputs = async () => {
+const getInputs = () => {
     const inputs = core.getInput('lang_choice');
 
     console.log(inputs);
@@ -43,7 +43,7 @@ const main = async () => {
 
     const dirPath = `./Daily Problems/${month} ${year}/${data.question.frontendQuestionId}. ${data.question.title}/`;
 
-    await getInputs();
+    getInputs();
 
     await createFilesFromData(data, dirPath);
 };
