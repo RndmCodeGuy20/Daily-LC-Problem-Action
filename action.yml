@@ -3,6 +3,13 @@ author: "Shantanu Mane"
 
 description: "Get Daily LeetCode Problem"
 
+inputs:
+  lang_choice:
+    description: "Choose your preferred language"
+    required: true
+    default: "c++"
+    options: ["javascript", "python", "java", "c++", "c", "rust", "dart", "kotlin"]
+
 branding:
   icon: "code"
   color: "green"

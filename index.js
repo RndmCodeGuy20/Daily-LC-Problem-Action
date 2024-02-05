@@ -1,5 +1,6 @@
 import { graphqlHelper } from "./helpers/graphqlHelper.js";
 import createFilesFromData from "./helpers/fileHelper.js";
+import core from "@actions/core";
 
 const query = `
 query questionOfToday {
@@ -24,16 +25,25 @@ query questionOfToday {
     }
 }`;
 
+const getInputs = async () => {
+    const inputs = core.getInput('lang_choice');
+
+    console.log(inputs);
+
+    // return inputs;
+};
+
 const main = async () => {
     let data = await graphqlHelper.getProblem(query);
     data = data.activeDailyCodingChallengeQuestion;
-    // console.log(data);
 
     const dateData = data.date.split('-');
     const date = new Date(dateData[0], dateData[1] - 1, dateData[2]);
     const { month, year } = { month: date.toLocaleString('default', { month: 'long' }), year: date.getFullYear() };
 
     const dirPath = `./Daily Problems/${month} ${year}/${data.question.frontendQuestionId}. ${data.question.title}/`;
+
+    await getInputs();
 
     await createFilesFromData(data, dirPath);
 };
