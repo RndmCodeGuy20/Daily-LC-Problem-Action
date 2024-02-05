@@ -28,53 +28,86 @@ function createFile(filePath, data) {
     });
 }
 
-async function createFilesFromData(data, dirPath) {
-    await createDirectory(dirPath);
-
-    const cppFilePath = path.join(dirPath, 'solution.cpp');
-    const mdFilePath = path.join(dirPath, 'question.md');
-
-    const cppSnippet = data.question.codeSnippets.find((snippet) => snippet.lang === 'C++').code;
-
-    const turndownService = new TurndownService();
-
-    const cppCode = `
-//
-// Created by SHANTANU on ${data.date}.
-//
-#include <bits/stdc++.h>
+const fileCreationHandler = (codeSnippet, lang) => {
+    const snippets = {
+        'C++': {
+            code: `#include <bits/stdc++.h>
 using namespace std;
 
-${cppSnippet}
+${codeSnippet}
 
 int main() {
     Solution solution;
-
     return 0;
-}
-`;
+}`,
+            ext: 'cpp',
+        },
+        'Python3': {
+            code: codeSnippet,
+            ext: 'py',
+        },
+        'JavaScript': {
+            code: codeSnippet,
+            ext: 'js',
+        },
+        'Java': {
+            code: `
+${codeSnippet}
+
+public class Main {
+    public static void main(String[] args) {
+        
+    }
+}`,
+            ext: 'java',
+        },
+        'C': {
+            code: `#include <stdio.h>
+
+${codeSnippet}
+
+int main() {
+    return 0;
+}`,
+            ext: 'c',
+        },
+    }
+
+    return snippets[lang];
+};
+
+async function createFilesFromData(data, dirPath, lang = "Python3") {
+    await createDirectory(dirPath);
+
+    // const cppFilePath = path.join(dirPath, 'solution.cpp');
+    const mdFilePath = path.join(dirPath, 'question.md');
+
+    const codeSnippet = data.question.codeSnippets.find((snippet) => snippet.lang === lang).code;
+    const snippet = fileCreationHandler(codeSnippet, lang);
+    const codeFilePath = path.join(dirPath, `solution.${snippet.ext}`);
+
+    const turndownService = new TurndownService();
 
     const markdown = turndownService.turndown(data.question.content);
-    // console.log(markdown);
 
     const mdCode = `
-<style>
-*{
-    font-family: "Plus Jakarta Sans", sans-serif;
+                < style >
+* {
+                    font- family: "Plus Jakarta Sans", sans- serif;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    box - sizing: border - box;
 }
 .diff{
     background: #3a3f4b;
     padding: 5px;
-    width: max-content;
-    border-radius: 5px;
-    font-size: 12px;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-weight: 700;
+    width: max - content;
+    border - radius: 5px;
+    font - size: 12px;
+    font - family: "Plus Jakarta Sans", sans - serif;
+    font - weight: 700;
 }
-</style>
+</style >
 
 # ${data.question.title}
 
@@ -86,10 +119,10 @@ ${data.question.topicTags.map((tag) => `<div class="diff" style="color: #46c6c2"
 
 ---
 
-${markdown}
+    ${markdown}
 `;
 
-    await createFile(cppFilePath, cppCode);
+    await createFile(codeFilePath, snippet.code);
     await createFile(mdFilePath, mdCode);
 }
 

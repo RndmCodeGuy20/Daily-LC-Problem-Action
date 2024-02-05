@@ -4,6 +4,17 @@ on:
   schedule:
     - cron: '0 1 * * *'
   workflow_dispatch:
+    inputs:
+      lang_choice:
+        type: choice
+        description: 'Choose the language you want to use'
+        required: true
+        default: 'c++'
+        options:
+          - 'javascript'
+          - 'python'
+          - 'java'
+          - 'c++'
 
 jobs:
   build:
