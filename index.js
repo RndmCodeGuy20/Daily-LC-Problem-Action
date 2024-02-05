@@ -48,7 +48,7 @@ const main = async () => {
 
     const lang = await getInputs();
 
-    await createFilesFromData(data, dirPath, "Java");
+    await createFilesFromData(data, dirPath, lang);
 };
 
 await main();
