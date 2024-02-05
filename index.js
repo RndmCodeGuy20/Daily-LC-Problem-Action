@@ -25,13 +25,14 @@ query questionOfToday {
     }
 }`;
 
-const getInputs = () => {
+const getInputs = async () => {
     const inputs = core.getInput('lang_choice');
 
     console.log(inputs);
 
-    // return inputs;
+    return inputs;
 };
+
 
 const main = async () => {
     let data = await graphqlHelper.getProblem(query);
@@ -43,7 +44,7 @@ const main = async () => {
 
     const dirPath = `./Daily Problems/${month} ${year}/${data.question.frontendQuestionId}. ${data.question.title}/`;
 
-    getInputs();
+    console.log(await getInputs());
 
     await createFilesFromData(data, dirPath);
 };
