@@ -5,11 +5,17 @@ description: "Get Daily LeetCode Problem"
 
 inputs:
   lang_choice:
-    description: "Choose your preferred language"
+    type: choice
+    description: 'Choose the language you want to use'
     required: true
-    default: "c++"
-    options: ["javascript", "python", "java", "c++", "c", "rust", "dart", "kotlin"]
+    default: 'c++'
+    options:
+      - 'javascript'
+      - 'python'
+      - 'java'
+      - 'c++'
 
+      
 branding:
   icon: "code"
   color: "green"

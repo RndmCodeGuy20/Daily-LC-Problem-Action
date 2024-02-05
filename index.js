@@ -1,6 +1,9 @@
 import { graphqlHelper } from "./helpers/graphqlHelper.js";
 import createFilesFromData from "./helpers/fileHelper.js";
-import core from "@actions/core";
+// const core = require('@actions/core');
+import * as core from '@actions/core';
+
+console.log(core.getInput('lang_choice'));
 
 const query = `
 query questionOfToday {
