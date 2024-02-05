@@ -3,7 +3,6 @@ import createFilesFromData from "./helpers/fileHelper.js";
 // const core = require('@actions/core');
 import * as core from '@actions/core';
 
-console.log(core.getInput('lang_choice'));
 
 const query = `
 query questionOfToday {
@@ -47,9 +46,9 @@ const main = async () => {
 
     const dirPath = `./Daily Problems/${month} ${year}/${data.question.frontendQuestionId}. ${data.question.title}/`;
 
-    console.log(await getInputs());
+    const lang = await getInputs();
 
-    await createFilesFromData(data, dirPath);
+    await createFilesFromData(data, dirPath, "Java");
 };
 
 await main();
