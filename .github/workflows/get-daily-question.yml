@@ -1,8 +1,6 @@
 name: Get Daily LeetCode Problem
 
 on:
-  schedule:
-    - cron: '0 1 * * *'
   workflow_dispatch:
     inputs:
       lang_choice:
