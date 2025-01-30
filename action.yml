@@ -20,5 +20,5 @@ branding:
   color: "green"
 
 runs:
-  using: "oven-sh/setup-bun@v2"
+  using: "node20"
   main: "src/index.ts"
