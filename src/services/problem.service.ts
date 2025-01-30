@@ -11,7 +11,7 @@ interface ITopicTag {
   }
   
   interface IQuestion {
-    topicTags: ITopicTag[];
+    topicTags: ITopicTag[]; 
     difficulty: string;
     freqBar: number | null;
     frontendQuestionId: string;

@@ -5,10 +5,12 @@
   "devDependencies": {
     "@actions/core": "^1.11.1",
     "@types/bun": "latest",
-    "@types/turndown": "^5.0.5"
+    "@types/turndown": "^5.0.5",
+    "esbuild": "^0.24.2"
   },
   "scripts": {
-    "start": "bun run src/index.ts"
+    "start": "bun run src/index.ts",
+    "build": "esbuild --target=node20 --outfile=dist/setup/index.js --bundle --minify --platform=node --format=cjs src/index.ts"
   },
   "keywords": [
     "actions",
