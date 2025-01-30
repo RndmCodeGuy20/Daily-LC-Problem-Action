@@ -28,9 +28,11 @@ query questionOfToday {
 }`;
 
 const getInputs = async () => {
-    const inputs = core.getInput('lang_choice');
+    let inputs = core.getInput('lang_choice');
 
-    console.log(inputs);
+     if (inputs === ""){
+         inputs = "C++";
+     }
 
     return inputs;
 };
