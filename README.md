@@ -44,7 +44,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }} # If you are using a private repository
 
     - name: Get Daily LeetCode Problem
-      uses: RndmCodeGuy20/Daily-LC-Problem-Action@v1.4.0 # Use the latest version - ✨ - if you are reading this care to checkout the marketplace for the latest version
+      uses: RndmCodeGuy20/Daily-LC-Problem-Action@1.4.1 # Use the latest version - ✨ - if you are reading this care to checkout the marketplace for the latest version
       with: 
         lang_choice: 'Python3'
         # Strictly use one of these options : ["C++", "C", "Python3", "JavaScript", "Java"] - 🚀 names are case sensitive
