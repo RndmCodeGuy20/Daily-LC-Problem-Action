@@ -6,20 +6,19 @@ description: "Get Daily LeetCode Problem"
 inputs:
   lang_choice:
     type: choice
-    description: 'Choose the language you want to use'
+    description: "Choose the language you want to use"
     required: true
-    default: 'c++'
+    default: "c++"
     options:
-      - 'javascript'
-      - 'python'
-      - 'java'
-      - 'c++'
+      - "javascript"
+      - "python"
+      - "java"
+      - "c++"
 
-      
 branding:
   icon: "code"
   color: "green"
 
 runs:
-  using: "node16"
-  main: "index.js"
+  using: "oven-sh/setup-bun@v2"
+  main: "src/index.ts"

@@ -1,25 +1,33 @@
 {
   "name": "daily-lc-problem-action",
-  "version": "1.0.0",
-  "description": "get daily problem from lc right into your repo",
+  "module": "src/index.ts",
   "type": "module",
-  "main": "index.js",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@types/bun": "latest",
+    "@types/turndown": "^5.0.5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "bun run src/index.ts"
   },
   "keywords": [
     "actions",
     "cicd",
     "workflow"
   ],
-  "author": "RndmCodeGuy20",
-  "license": "MIT",
-  "dependencies": {
-    "graphql-request": "^6.1.0",
-    "turndown": "^7.1.2"
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   },
-  "devDependencies": {
-    "@actions/core": "^1.10.1"
+  "dependencies": {
+    "graphql-request": "^7.1.2",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "turndown": "^7.2.0"
+  },
+  "imports": {
+    "#config": "./src/config/index.ts",
+    "#utils": "./src/utils/index.ts",
+    "#services": "./src/services/index.ts",
+    "#helpers": "./src/helpers/index.ts"
   }
 }

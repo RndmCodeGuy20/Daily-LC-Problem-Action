@@ -5,41 +5,41 @@ on:
     inputs:
       lang_choice:
         type: choice
-        description: 'Choose the language you want to use'
+        description: "Choose the language you want to use"
         required: true
-        default: 'c++'
+        default: "c++"
         options:
-          - 'javascript'
-          - 'python'
-          - 'java'
-          - 'c++'
+          - "javascript"
+          - "python"
+          - "java"
+          - "c++"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 20
+      - name: Use Bun (Oven)
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.0
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: bun install
 
-    - name: Run script
-      run: npm run start
+      - name: Run script
+        run: bun run start
 
-    - name: Commit and push changes
-      run: |
-        git config --global user.name 'RndmCodeGuy20'
-        git config --global user.email 'shantanu.mane.200@outlook.com'
-        git status
-        git add -A
-        git commit -m "chore(action) 🦈: today's daily leetcode question added"
-        git push origin main
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'RndmCodeGuy20'
+          git config --global user.email 'shantanu.mane.200@outlook.com'
+          git status
+          git add -A
+          git commit -m "chore(action) 🦈: today's daily leetcode question added"
+          git push origin main
