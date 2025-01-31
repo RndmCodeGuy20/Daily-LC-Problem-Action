@@ -21,4 +21,4 @@ branding:
 
 runs:
   using: "node20"
-  main: "dist/index.ts"
+  main: "dist/index.js"

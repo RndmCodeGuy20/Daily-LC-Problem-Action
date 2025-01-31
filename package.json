@@ -9,8 +9,9 @@
     "esbuild": "^0.24.2"
   },
   "scripts": {
-    "start": "bun run src/index.ts",
-    "build": "esbuild --target=node20 --outfile=dist/index.js --bundle --minify --platform=node --format=cjs src/index.ts"
+    "dev": "bun run src/index.ts",
+    "start": "node dist/index.js",
+    "build": "esbuild --target=node20 --outfile=dist/index.cjs --bundle --minify --platform=node --format=cjs src/index.ts"
   },
   "keywords": [
     "actions",
