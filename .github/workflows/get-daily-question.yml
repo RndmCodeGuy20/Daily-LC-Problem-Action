@@ -36,9 +36,9 @@ jobs:
         run: bun run start
 
       - name: Set up environment
-      run: |
-        source $GITHUB_ENV
-        bun --version
+        run: |
+          source $GITHUB_ENV
+          bun --version
 
       - name: Use the problem link
         run: echo "The daily problem link is $PROBLEM_LINK"
