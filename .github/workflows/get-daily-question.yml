@@ -35,6 +35,14 @@ jobs:
       - name: Run script
         run: bun run start
 
+      - name: Set up environment
+      run: |
+        source $GITHUB_ENV
+        bun --version
+
+      - name: Use the problem link
+        run: echo "The daily problem link is $PROBLEM_LINK"
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'RndmCodeGuy20'

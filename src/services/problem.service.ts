@@ -1,6 +1,7 @@
 import { graphqlHelper, FileHelper, logger } from "#helpers";
 import { envConfig } from "#config";
 import { writeFileSync } from 'fs';
+import { exec } from "child_process";
 
 interface ITopicTag {
   name: string;
@@ -80,11 +81,12 @@ export class ProblemService {
     await FileHelper.createFilesFromData(data, dirPath, lang);
   }
 
-  static GITHUB_ENV: string = './github_env';
+  static GITHUB_ENV: string = process.env.GITHUB_ENV || './github_env';
 
   static async echoProblemLinkToEnv(questionLink: string) {
     logger.info(`Echoing problem link to GITHUB_ENV...`);
-    writeFileSync(this.GITHUB_ENV, `PROBLEM_LINK=https://leetcode.com${questionLink}description/\n`, { flag: 'a' });
+    const envContent = `PROBLEM_LINK=https://leetcode.com${questionLink}description/\n`;
+    writeFileSync(this.GITHUB_ENV, envContent, { flag: 'a' });
     logger.info(`Problem link echoed to GITHUB_ENV: ${questionLink}`);
   }
 }
