@@ -1,6 +1,7 @@
 {
   "name": "daily-lc-problem-action",
   "module": "src/index.ts",
+  "version": "2.0.0",
   "type": "module",
   "devDependencies": {
     "@actions/core": "^1.11.1",

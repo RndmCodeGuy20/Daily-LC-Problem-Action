@@ -59,6 +59,8 @@ export class ProblemService {
 
     const data: IDailyChallengeData = await graphqlHelper.getProblem(query) as IDailyChallengeData;
 
+    // logger.debug(`Question data: ${JSON.stringify(data)}`)
+
     logger.info(`Fetched daily problem from GraphQL, saving to file...`);
 
     const questionLink = data.activeDailyCodingChallengeQuestion.link;

@@ -1,0 +1,19 @@
+{
+    "blocks": [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": "2158. Check Sum",
+                "emoji": true
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "You are given a *0-indexed* integer array `nums`.\n\nReturn _*the maximum value over all triplets of indices*_ `(i, j, k)` _such that_ `i < j < k`_._ If all such triplets have a negative value, return `0`.\n\nThe *value of a triplet of indices* `(i, j, k)` is equal to `(nums[i] - nums[j]) * nums[k]`.\n\n*Example 1:*\n\n*Input:* nums = [12,6,1,2,7]\n*Output:* 77\n*Explanation:* The value of the triplet (0, 2, 4) is (nums[0] - nums[2]) * nums[4] = 77.\nIt can be shown that there are no ordered triplets of indices with a value greater than 77. \n\n*Example 2:*\n\n*Input:* nums = [1,10,3,4,19]\n*Output:* 133\n*Explanation:* The value of the triplet (1, 2, 4) is (nums[1] - nums[2]) * nums[4] = 133.\nIt can be shown that there are no ordered triplets of indices with a value greater than 133.\n\n*Example 3:*\n\n*Input:* nums = [1,2,3]\n*Output:* 0\n*Explanation:* The only ordered triplet of indices (0, 1, 2) has a negative value of (nums[0] - nums[1]) * nums[2] = -3. Hence, the answer would be 0.\n\n*Constraints:*\n\n*   `3 <= nums.length <= 105`\n*   `1 <= nums[i] <= 106`"
+            }
+        }
+    ]
+}

@@ -8,14 +8,14 @@ interface ISnippet {
     ext: string;
 }
 
-interface IQuestion { 
-    question: { 
-        codeSnippets: any[]; 
-        content: any; 
-        title: any; 
-        difficulty: string; 
+interface IQuestion {
+    question: {
+        codeSnippets: any[];
+        content: any;
+        title: any;
+        difficulty: string;
         topicTags: any[];
-    }; 
+    };
 }
 
 export class FileHelper {
@@ -87,6 +87,32 @@ export class FileHelper {
             `<div style="color: ${data.question.difficulty === "Medium" ? '#fac31d' : data.question.difficulty === "Hard" ? '#ff375f' : '#46c6c2'};\n` +
             `padding: 2px; background-color: #3a3f4b; border-radius: 5px;">${data.question.difficulty}</div>\n` +
             `${data.question.topicTags.map((tag) => `<div style="color: #46c6c2">${tag.name}</div>`).join('\n')}\n</div>\n\n---\n\n${markdown}`;
+
+        // logger.debug(`markdown: ${markdown.split('\n').join('')}`);
+
+
+
+        const message = {
+            "blocks": [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": `${data.question.title}`,
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": `${markdown.replace(/\*\*/g, '*').replace(/\n/g, '\\n')}`
+                    }
+                }
+            ]
+        }
+
+        // await this.createFile('temp', markdown.replace(/\*\*/g, '*').replace(/\n/g, '\\n'));
 
         await Promise.all([
             this.createFile(codeFilePath, snippet.code),

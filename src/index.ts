@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
-import { ProblemService } from "#services";
-import { envConfig } from "#config";
+import { ProblemService } from '#services';
+import { envConfig } from '#config';
 
 const getInputs = () => {
     const lang = core.getInput('lang_choice') || envConfig.DEFAULT_LANGUAGE;
